@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OS Simulator</title>
+
+<style>
+body {
+  background: #101827;
+  color: white;
+  font-family: Arial;
+  text-align: center;
+  padding: 20px;
+}
+
+.container {
+  max-width: 500px;
+  margin: auto;
+  background: #1e293b;
+  padding: 25px;
+  border-radius: 15px;
+}
+
+h1 { color: #38bdf8; }
+
+button, select {
+  padding: 13px;
+  margin: 8px;
+  border: none;
+  border-radius: 8px;
+  background: #0284c7;
+  color: white;
+  font-size: 16px;
+}
+
+#resultado {
+  background: #0f172a;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
+  min-height: 80px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1>OS SIMULATOR</h1>
+<p>Simulador de instalação de sistemas operacionais</p>
+
+<h3>Escolha seu sistema:</h3>
+
+<select id="sistema">
+<option value="Windows">Windows</option>
+<option value="Linux">Linux</option>
+</select>
+
+<div id="resultado">
+Bem-vindo ao simulador!
+</div>
+
+<button onclick="iniciar()">Iniciar instalação</button>
+<button onclick="proximo()">Próxima etapa</button>
+
+</div>
+
+<script>
+let etapa = 0;
+
+const etapas = [
+"1. Preparação do computador",
+"2. Escolha do idioma e teclado",
+"3. Configuração da BIOS/UEFI",
+"4. Seleção do disco fictício",
+"5. Simulação da instalação",
+"6. Configuração inicial do sistema",
+"7. Instalação concluída!"
+];
+
+function iniciar() {
+  etapa = 0;
+  document.getElementById("resultado").innerHTML =
+  "Sistema escolhido: " +
+  document.getElementById("sistema").value +
+  "<br><br>" + etapas[etapa];
+}
+
+function proximo() {
+  if (etapa < etapas.length - 1) {
+    etapa++;
+    document.getElementById("resultado").innerHTML =
+    etapas[etapa];
+  } else {
+    document.getElementById("resultado").innerHTML =
+    "Parabéns! Simulação concluída com sucesso!";
+  }
+}
+</script>
+</body>
+</html>
