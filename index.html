@@ -98,5 +98,100 @@ function proximo() {
   }
 }
 </script>
+  <style>
+.desktop-sim {
+  background: linear-gradient(135deg,#071b50,#087bd5,#42c9e8);
+  min-height:550px;
+  padding:20px;
+  color:white;
+  font-family:Arial;
+  border-radius:15px;
+}
+.desktop-sim h2 {text-align:center}
+.desktop-icons {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+  margin-top:35px;
+}
+.desktop-icon {
+  background:#ffffff25;
+  border:1px solid #ffffff50;
+  padding:20px 5px;
+  border-radius:12px;
+  text-align:center;
+  cursor:pointer;
+  color:white;
+}
+.desktop-icon span {
+  display:block;
+  font-size:38px;
+  margin-bottom:8px;
+}
+.desktop-bar {
+  margin-top:40px;
+  background:#06152ddd;
+  padding:15px;
+  border-radius:12px;
+  display:flex;
+  justify-content:space-between;
+}
+.desktop-sim button {
+  background:#078be8;
+  border:0;
+  color:white;
+  padding:10px 15px;
+  border-radius:8px;
+}
+</style>
+
+<div class="desktop-sim">
+  <h2 id="systemTitle">Windows Simulator</h2>
+  <p style="text-align:center">Área de trabalho</p>
+
+  <div class="desktop-icons">
+    <button class="desktop-icon" onclick="openSim('Meu Computador')">
+      <span>💻</span>Meu Computador
+    </button>
+    <button class="desktop-icon" onclick="openSim('Documentos')">
+      <span>📁</span>Documentos
+    </button>
+    <button class="desktop-icon" onclick="openSim('Navegador')">
+      <span>🌐</span>Navegador
+    </button>
+    <button class="desktop-icon" onclick="openSim('Configurações')">
+      <span>⚙️</span>Configurações
+    </button>
+  </div>
+
+  <div id="simWindow" style="display:none;background:white;color:#172033;padding:20px;border-radius:12px;margin-top:20px">
+    <h3 id="windowTitle"></h3>
+    <p id="windowText"></p>
+    <button onclick="closeSim()">Fechar</button>
+  </div>
+
+  <div class="desktop-bar">
+    <button onclick="openSim('Menu Iniciar')">⊞ Iniciar</button>
+    <span id="simClock"></span>
+  </div>
+</div>
+
+<script>
+function openSim(name) {
+  document.getElementById('windowTitle').textContent=name;
+  document.getElementById('windowText').textContent=
+    'Você abriu a opção '+name+' no OS Simulator!';
+  document.getElementById('simWindow').style.display='block';
+}
+function closeSim() {
+  document.getElementById('simWindow').style.display='none';
+}
+function updateSimClock() {
+  document.getElementById('simClock').textContent=
+    new Date().toLocaleTimeString('pt-BR');
+}
+updateSimClock();
+setInterval(updateSimClock,1000);
+</script>
 </body>
-</html>
+
